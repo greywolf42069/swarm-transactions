@@ -20,7 +20,7 @@ const burnScheme = {
     version: orEq([undefined, 2, 3]),
     assetId: isAssetId,
     amount: isNaturalNumberLike,
-    chainId: isNaturalNumberLike,
+    chainId: isNaturalNumberOrZeroLike,
     fee: isNaturalNumberOrZeroLike,
     timestamp: isNumber,
     proofs: ifElse(isArray, defaultValue(true), orEq([ undefined ])),

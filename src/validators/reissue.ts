@@ -22,7 +22,7 @@ const reissueScheme = {
   assetId: isAssetId,
   quantity: isNaturalNumberLike,
   reissuable: isBoolean,
-  chainId: isNaturalNumberLike,
+  chainId: isNaturalNumberOrZeroLike,
   fee: isNaturalNumberOrZeroLike,
   timestamp: isNumber,
   proofs: ifElse(isArray, defaultValue(true), orEq([ undefined ])),

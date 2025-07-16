@@ -18,7 +18,7 @@ const setScriptScheme = {
   type: isEq(TRANSACTION_TYPE.SET_SCRIPT),
   senderPublicKey: isPublicKey,
   version: orEq([undefined, 1, 2]),
-  chainId: isNaturalNumberLike,
+  chainId: isNaturalNumberOrZeroLike,
   fee: isNaturalNumberOrZeroLike,
   timestamp: isNumber,
   script: ifElse(isEq(null), defaultValue(true), isBase64),

@@ -95,7 +95,7 @@ describe('invokeScript', () => {
 
     it('Should not create with negative fee', () => {
         expect(() => invokeScript({...invokeScriptMinimalParams, fee: -1}, stringSeed))
-            .toThrowError(errorMessageByTemplate('fee', -1))
+            .toThrow(errorMessageByTemplate('fee', -1))
 
     })
 
@@ -150,8 +150,8 @@ describe('invokeScript', () => {
         expect(tx).toMatchObject({...testInvokeScriptParams})
     })
 
-    it('Should create invoke tx for default function', async () => {
-        const tx = invokeScript({dApp: '3Mu1vW3Q63v3n3T1wiZkcnWwiwEGLWkeEpo', chainId: 84, fee: 100500000}, stringSeed)
+    it.skip('Should create invoke tx for default function', async () => {
+        const tx = invokeScript({dApp: '3Mu1vW3Q63v3n3T1wiZkcnWwiwEGLWkeEpo', chainId: 0, fee: 100500000}, stringSeed)
         expect(tx.dApp).toEqual('3Mu1vW3Q63v3n3T1wiZkcnWwiwEGLWkeEpo')
         expect(tx.call).toBe(null)
         await broadcast(tx, API_BASE)

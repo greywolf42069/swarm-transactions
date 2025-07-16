@@ -18,7 +18,7 @@ const setAssetScriptScheme = {
     senderPublicKey: isPublicKey,
     version: orEq([undefined, 1, 2]),
     assetId: isAssetId,
-    chainId: isNaturalNumberLike,
+    chainId: isNaturalNumberOrZeroLike,
     fee: isNaturalNumberOrZeroLike,
     timestamp: isNumber,
     script: isBase64,

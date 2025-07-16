@@ -55,7 +55,7 @@ const invokeScheme = {
   ),
   fee: isNaturalNumberOrZeroLike,
   feeAssetId: isWavesOrAssetId,
-  chainId: isNaturalNumberLike,
+  chainId: isNaturalNumberOrZeroLike,
   timestamp: isNaturalNumberLike,
   proofs: ifElse(isArray, defaultValue(true), orEq([ undefined ])),
 };
