@@ -1,12 +1,14 @@
-# waves-transactions  [![npm version](https://badge.fury.io/js/%40waves%2Fwaves-transactions.svg)](https://badge.fury.io/js/%40waves%2Fwaves-transactions)
+# Swarm-transactions  [![npm version](https://badge.fury.io/js/%40waves%2Fwaves-transactions.svg)](https://badge.fury.io/js/%40waves%2Fwaves-transactions)
 
 [![License][license-image]][license-url]
 
 [license-url]: https://opensource.org/licenses/MIT
 [license-image]: https://img.shields.io/npm/l/make-coverage-badge.svg
 
-Using this library you can easily create and sign transactions for Waves blockchain.
+Using this library you can easily create and sign transactions for the Swarm blockchain.
 It also allows you to multi-sign existing transactions or create them without signature at all.
+Mainnet Node http://5.189.156.118:6869
+ChainID: "0"
 
 - [Transactions](#Transactions) 
   - [Creation](#Creation)
@@ -368,7 +370,7 @@ const unsignedTransferTx = transfer({
 })
 ```
 
-Now you are able to POST it to Waves API or store for future purpose or you can add another signature from other party:
+Now you are able to POST it to Swarm API or store for future purpose or you can add another signature from other party:
 ```js
 const otherPartySeed = 'other party seed phrase'
 const transferSignedWithTwoParties = transfer(signedTranserTx, seed)
@@ -410,19 +412,17 @@ const params = {
 const signedOrder = order(params, 'Some seed ')
 ```
 ### Broadcast
-To send transaction you can use either node [REST API](https://nodes.wavesplatform.com/api-docs/index.html#!/transactions/broadcast) or [broadcast](https://wavesplatform.github.io/waves-transactions/globals.html#broadcast) helper function:
+To send transaction you can use either node [REST API](http://5.189.156.118:6869/api-docs/index.html#!/transactions/broadcast) or [broadcast](http://5.189.156.118:6869/waves-transactions/globals.html#broadcast) helper function:
 ```javascript
 const {broadcast} =  require('@waves/waves-transactions');
 const nodeUrl = 'https://nodes.wavesplatform.com';
 
 broadcast(signedTx, nodeUrl).then(resp => console.log(resp))
 ```
-You can send tx to any waves node you like:. E.g.:
-* https://nodes-testnet.wavesnodes.com - waves TESTNET nodes hosted by Wavesplatform
-* https://nodes.wavesplatform.com - waves MAINNET nodes hosted by Wavesplatform
+You can send tx to any Swarm node you like:. E.g.:
+* (http://5.189.156.118:6869) - Swarm mainnet node anon contributor
 #### Important!!!
-Most transactions require chainId as parameter, e.g: [IBurnParams](https://wavesplatform.github.io/waves-transactions/interfaces/_transactions_.iburnparams.html). By default chainId is 'W', which means MAINNET. To make transaction in TESTNET be sure to pass chainId if it is present in params interface and then send it to TESTNET node
-
+Most transactions require chainId as parameter, e.g: [IBurnParams](https://wavesplatform.github.io/waves-transactions/interfaces/_transactions_.iburnparams.html). By default chainId is "0", which means MAINNET. 
 ### Dependencies
 This library uses `@waves/ts-lib-crypto` for cryptography and `@waves/node-api-js` for interacting with node. 
 You can access them this way:
